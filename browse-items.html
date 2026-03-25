@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Items</title>
+<style>
+    /* HERO */
+
+.browse-hero{
+background:linear-gradient(45deg,#16a085,#27ae60);
+color:white;
+padding:60px;
+text-align:center;
+}
+
+/* CONTROLS */
+
+.browse-controls{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:20px;
+flex-wrap:wrap;
+}
+
+#search, #category{
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+#search{
+padding:12px 15px;
+width:280px;
+border-radius:30px;
+border:none;
+outline:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+#search:focus{
+transform:scale(1.05);
+}
+/* ITEMS GRID FIX */
+
+#items{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+#category{
+padding:12px;
+border-radius:30px;
+border:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+cursor:pointer;
+}
+
+.no-result{
+font-size:18px;
+color:#e74c3c;
+margin-top:20px;
+display:none;
+}
+
+.browse-hero h2{
+font-size:32px;
+animation:fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(-20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.browse-controls{
+margin-top:-30px;
+}
+
+/* ANIMATION */
+#results .card{
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 0.5s forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* SEARCH TEXT */
+#searchText{
+color:#16a085;
+font-weight:bold;
+margin-bottom:10px;
+}
+</style>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="header-container">
+<div class="logo">
+<h1><img src="images/logo.png"> Eco Exchange</h1>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="browse-items.html">Browse Items</a>
+<a href="add-item.html">Add Item</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="browse-hero">
+<h2>Find What You Need 🔍</h2>
+<p>Search and exchange items easily</p>
+</section>
+
+<!-- SEARCH + FILTER -->
+<section class="browse-controls">
+
+<input type="text" id="search" placeholder="Search items...">
+
+<select id="category">
+<option value="all">All Categories</option>
+<option value="mobile">Mobile</option>
+<option value="books">Books</option>
+<option value="electronics">Electronics</option>
+</select>
+
+</section>
+
+<!-- SEARCH RESULTS -->
+<section id="resultsSection" style="display:none;">
+
+<h2>Search Results</h2>
+
+<p id="searchText" style="text-align:center; font-size:18px;"></p>
+
+<div class="items" id="results"></div>
+<!-- ITEMS -->
+<section class="items" id="items">
+
+<div class="card" data-category="mobile">
+<img src="images/mobile.jpg">
+<h3>Mobile</h3>
+<select class="exchange">
+<option>Exchange For</option>
+<option>Mobile</option>
+<option>Books</option>
+<option>Headphones</option>
+<option>Watch</option>
+</select>
+</div>
+
+<div class="card" data-category="books">
+<img src="images/books.jpg">
+<h3>Books</h3>
+<select class="exchange">
+<option>Exchange For</option>
+<option>Mobile</option>
+<option>Books</option>
+<option>Headphones</option>
+<option>Watch</option>
+</select>
+</div>
+
+<div class="card" data-category="electronics">
+<img src="images/headphone.jpg">
+<h3>Headphones</h3>
+</div>
+
+<div class="card" data-category="electronics">
+<img src="images/laptop.jpg">
+<h3>Laptop</h3>
+</div>
+
+<div class="card" data-category="electronics">
+<img src="images/watch.jpg">
+<h3>Smart Watch</h3>
+<select class="exchange">
+<option>Exchange For</option>
+<option>Mobile</option>
+<option>Books</option>
+<option>Headphones</option>
+<option>Watch</option>
+</select>
+</div>
+
+<div class="card" data-category="electronics">
+<img src="images/camera.jpg">
+<select class="exchange">
+<option>Exchange For</option>
+<option>Mobile</option>
+<option>Books</option>
+<option>Headphones</option>
+<option>Watch</option>
+</select>
+<h3>Camera</h3>
+</div>
+
+</section>
+
+<button class="exchange-btn">Request Exchange</button>
+
+<!-- NO RESULT -->
+<p id="noResult" style="display:none; text-align:center;">❌ No items found</p>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-box">
+<h3>Eco Exchange</h3>
+<p>Exchange your items easily.</p>
+</div>
+
+<div class="footer-box">
+<h3>Links</h3>
+<a href="index.html">Home</a>
+<a href="browse-items.html">Browse</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="footer-box">
+<h3>Contact</h3>
+<p>📧 ecoexchange@gmail.com</p>
+<p>📞 +91 9876543210</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Eco Exchange</p>
+</div>
+
+</footer>
+
+<script>
+
+let search = document.getElementById("search");
+let category = document.getElementById("category");
+let cards = document.querySelectorAll("#items .card");
+
+let resultsSection = document.getElementById("resultsSection");
+let results = document.getElementById("results");
+
+function filterItems(){
+
+let searchValue = search.value.toLowerCase();
+let categoryValue = category.value;
+
+results.innerHTML = ""; // clear old results
+
+let found = 0;
+let delay = 0;
+cards.forEach(function(card){
+
+let text = card.innerText.toLowerCase();
+let cat = card.getAttribute("data-category");
+
+let matchText = text.includes(searchValue);
+let matchCategory = categoryValue === "all" || cat.includes(categoryValue);
+if(matchText && matchCategory){
+let clone = card.cloneNode(true);
+
+clone.style.animationDelay = delay + "s"; // animation
+delay += 0.1;
+
+results.appendChild(clone);
+found++;
+
+}
+
+});
+
+// SHOW / HIDE
+if(searchValue !== "" || categoryValue !== "all"){
+resultsSection.style.display = "block";
+document.getElementById("items").style.display = "none";
+}else{
+resultsSection.style.display = "none";
+document.getElementById("items").style.display = "grid";
+}
+
+if(found === 0){
+results.innerHTML = "<p style='text-align:center;'>❌ No items found</p>";
+}
+
+}
+
+search.addEventListener("keyup", filterItems);
+category.addEventListener("change", filterItems);
+
+
+function filterItems(){
+
+let searchValue = search.value.toLowerCase();
+let categoryValue = category.value;
+
+results.innerHTML = "";
+
+let found = 0;
+let selectedItems = []; // 👈 ADD
+
+cards.forEach(function(card){
+
+let text = card.innerText.toLowerCase();
+let cat = card.getAttribute("data-category");
+
+let matchText = text.includes(searchValue);
+let matchCategory = categoryValue === "all" || cat.includes(categoryValue);
+
+if(matchText && matchCategory){
+
+let clone = card.cloneNode(true);
+results.appendChild(clone);
+found++;
+
+// 👇 STORE DATA
+selectedItems.push({
+title: card.querySelector("h3").innerText,
+image: card.querySelector("img").src
+});
+
+}
+
+});
+
+// 👇 LOCAL STORAGE SAVE
+localStorage.setItem("searchResults", JSON.stringify(selectedItems));
+
+// SHOW / HIDE
+if(searchValue !== "" || categoryValue !== "all"){
+resultsSection.style.display = "block";
+document.getElementById("items").style.display = "none";
+}else{
+resultsSection.style.display = "none";
+document.getElementById("items").style.display = "grid";
+}
+
+if(found === 0){
+results.innerHTML = "<p style='text-align:center;'>❌ No items found</p>";
+}
+
+}
+let searchText = document.getElementById("searchText");
+
+if(searchValue !== "" || categoryValue !== "all"){
+searchText.innerHTML = `🔍 Showing results for "<b>${searchValue || categoryValue}</b>"`;
+}else{
+searchText.innerHTML = "";
+}
+</script>
+</body>
+</html>

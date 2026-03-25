@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | Eco Exchange</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* REGISTER SECTION */
+
+.register-section{
+padding:60px 20px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* GLASS BOX */
+
+.register-box{
+width:380px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+text-align:center;
+}
+
+/* TITLE */
+
+.register-box h2{
+margin-bottom:15px;
+}
+
+/* INPUTS */
+
+.register-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+outline:none;
+}
+
+/* BUTTON */
+
+.register-box button{
+width:100%;
+padding:12px;
+background:#27ae60;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.register-box button:hover{
+background:#219150;
+transform:scale(1.05);
+}
+
+/* ERROR + SUCCESS */
+
+#error{
+color:#ff6b6b;
+display:none;
+margin-bottom:10px;
+}
+
+#success{
+color:lightgreen;
+display:none;
+margin-bottom:10px;
+}
+
+/* LINK */
+
+.register-box a{
+text-decoration:none;
+color:#16a085;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ✅ SAME NAVBAR -->
+<header>
+
+<h1 class="site-title">Eco Exchange</h1>
+
+<nav class="nav-center">
+<a href="index.html">Home</a>
+<a href="browse-items.html">Browse Items</a>
+<a href="add-item.html">Add Item</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+<!-- REGISTER -->
+<section class="register-section">
+
+<div class="register-box">
+
+<h2>Create Account 🚀</h2>
+
+<p id="error">Passwords do not match ❌</p>
+<p id="success">Account Created Successfully ✅</p>
+
+<form id="registerForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="email" id="email" placeholder="Email" required>
+
+<input type="password" id="password" placeholder="Password" required>
+
+<input type="password" id="confirm" placeholder="Confirm Password" required>
+
+<button type="button" onclick="sendToWhatsApp()">Register</button>
+
+</form>
+
+<p style="margin-top:15px;">
+Already have account? <a href="login.html">Login</a>
+</p>
+
+</div>
+
+</section>
+
+<!-- ✅ SAME FOOTER -->
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-box">
+<h3>Eco Exchange</h3>
+<p>Exchange your items easily.</p>
+</div>
+
+<div class="footer-box">
+<h3>Quick Links</h3>
+<a href="index.html">Home</a>
+<a href="browse-items.html">Browse</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="footer-box">
+<h3>Contact</h3>
+<p>📧 ecoexchange@gmail.com</p>
+<p>📞 +91 9876543210</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Eco Exchange | Designed by Priyal</p>
+</div>
+
+</footer>
+
+<!-- JS -->
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let pass = document.getElementById("password").value;
+let confirm = document.getElementById("confirm").value;
+
+if(pass !== confirm){
+document.getElementById("error").style.display = "block";
+document.getElementById("success").style.display = "none";
+}else{
+document.getElementById("error").style.display = "none";
+document.getElementById("success").style.display = "block";
+this.reset();
+}
+
+});
+let message = `New Registration 👤
+
+Name: ${name}
+Email: ${email}`;
+
+</script>
+
+</body>
+</html>
